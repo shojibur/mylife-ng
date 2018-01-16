@@ -1,0 +1,75 @@
+<div class="main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="weather-card one" *ngIf="(weatherData !=  undefined) && (weatherData['weather'][0].main != 'Clouds')">
+                    <div class="top">
+                        <div class="wrapper">
+                            <div class="mynav">
+                                <a href="javascript:;"><span class="lnr lnr-chevron-left"></span></a>
+                                <a href="javascript:;"><span class="lnr lnr-cog"></span></a>
+                            </div>
+                            <h1 class="heading" *ngIf="weatherData !=  undefined">{{ weatherData['weather'][0].main }}</h1>
+                            <h3 class="location" *ngIf="weatherData !=  undefined" >{{ weatherData['name'] }}</h3>
+                            <p class="temp">
+                                <span class="temp-value"  *ngIf="weatherData !=  undefined" >{{ weatherData['main'].temp }}</span>
+                                <span class="deg">0</span>
+                                <a href="javascript:;"><span class="temp-type">C</span></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-card rain" *ngIf="(weatherData !=  undefined) && (weatherData['weather'][0].main == 'Clouds')">
+                    <div class="top">
+                        <div class="wrapper">
+                            <div class="mynav">
+                                <a href="javascript:;"><span class="lnr lnr-chevron-left"></span></a>
+                                <a href="javascript:;"><span class="lnr lnr-cog"></span></a>
+                            </div>
+                            <h1 class="heading" *ngIf="weatherData !=  undefined">{{ weatherData['weather'][0].main }}</h1>
+                            <h3 class="location" *ngIf="weatherData !=  undefined" >{{ weatherData['name'] }}</h3>
+                            <p class="temp">
+                                <span class="temp-value"  *ngIf="weatherData !=  undefined" >{{ weatherData['main'].temp }}</span>
+                                <span class="deg">0</span>
+                                <a href="javascript:;"><span class="temp-type">C</span></a>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="col-md-4" style="height: 500px">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>You may need to know</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table" *ngIf="rateData != undefined">
+                            <tr>
+                                <td>From</td>
+                                <td>To</td>
+
+                            </tr>
+                            <tr>
+                                <td>1 USD</td>
+                                <td>{{ rateData['rates'].MYR | number : '1.2' }} RM</td>
+                            </tr>
+                            <tr>
+                                <td>1 USD</td>
+                                <td>{{ rateData['rates'].BDT |  number : '1.2'}} RM</td>
+                            </tr>
+                            <tr>
+                                <td>1 RM</td>
+                                <td>{{ rmtobdt | number : '1.2'}} BDT</td>
+                            </tr>
+                        </table>
+                        <h2 *ngIf="rateData == undefined"> Sorry API Not working</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
